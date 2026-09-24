@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qazi Muhammad Atif | Software Developer</title>
+    <meta name="description" content="Software Developer specializing in Java, Spring Boot, Apache Kafka and Keycloak">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --bg-card: #1e293b;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --border: #334155;
+            --accent: #60a5fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 16px 0;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 140px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto 32px;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border);
+            color: var(--text);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Section */
+        section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: border-color 0.2s;
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary);
+        }
+
+        .skill-card h3 {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            padding: 4px 0;
+        }
+
+        /* Experience */
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid var(--bg);
+        }
+
+        .timeline-item h3 {
+            font-size: 1.15rem;
+            margin-bottom: 4px;
+        }
+
+        .timeline-item .company {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .timeline-item .date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .timeline-item ul {
+            padding-left: 18px;
+            color: var(--text-muted);
+        }
+
+        .timeline-item li {
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+        }
+
+        .project-content {
+            padding: 28px;
+        }
+
+        .project-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .project-content .tag {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent);
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            margin-right: 6px;
+        }
+
+        .project-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .project-content ul {
+            padding-left: 18px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .project-content li {
+            margin-bottom: 4px;
+        }
+
+        /* Education */
+        .edu-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+        }
+
+        .edu-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+        }
+
+        .edu-card .school {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .edu-card .date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Contact */
+        .contact-content {
+            text-align: center;
+        }
+
+        .contact-content p {
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            font-size: 1.05rem;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+
+        .contact-links a:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 120px 0 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">Qazi<span>.</span>Atif</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Qazi Muhammad <span>Atif</span></h1>
+            <p class="subtitle">Software Developer | Java & Spring Boot</p>
+            <p>Backend developer with hands-on experience in building scalable systems using Java, Spring Boot, Apache Kafka, and Keycloak. Focused on clean architecture, microservices, and event-driven applications.</p>
+            <div class="btn-group">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I am a Software Developer based in Rawalpindi, Pakistan, with practical experience in backend development. At Cydea Tech, I worked on designing RESTful APIs, integrating real-time event streaming with Apache Kafka, and implementing secure authentication using Keycloak.</p>
+                    <p>I enjoy building reliable and scalable systems and continuously learning modern backend technologies. I am currently looking for Backend / Java Developer opportunities where I can contribute and grow.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Backend Development</h3>
+                    <ul>
+                        <li>Java</li>
+                        <li>Spring Boot</li>
+                        <li>REST APIs</li>
+                        <li>Microservices</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Messaging & Security</h3>
+                    <ul>
+                        <li>Apache Kafka</li>
+                        <li>Keycloak</li>
+                        <li>OAuth2 / OpenID Connect</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Other Technologies</h3>
+                    <ul>
+                        <li>Firebase</li>
+                        <li>Google Maps API</li>
+                        <li>MySQL</li>
+                        <li>Git</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Soft Skills</h3>
+                    <ul>
+                        <li>Problem Solving</li>
+                        <li>Attention to Detail</li>
+                        <li>Logical Approach</li>
+                        <li>Team Collaboration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Software Developer</h3>
+                    <div class="company">Cydea Tech</div>
+                    <div class="date">February 2026 – July 2026 · NASTP, Rawalpindi</div>
+                    <ul>
+                        <li>Developed and maintained backend services using Java and Spring Boot framework.</li>
+                        <li>Integrated Apache Kafka for real-time event streaming and asynchronous communication.</li>
+                        <li>Implemented secure authentication and authorization solutions using Keycloak.</li>
+                        <li>Designed and built RESTful APIs following best practices and clean architecture principles.</li>
+                        <li>Collaborated on microservices-based applications with focus on scalability and performance.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>CampusLink – Smart Campus Companion</h3>
+                        <div>
+                            <span class="tag">Java</span>
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">Google Maps API</span>
+                        </div>
+                        <p>Final Year Project – A Smart Campus Companion application designed to help university students manage academic tasks efficiently.</p>
+                        <ul>
+                            <li>Class schedules & attendance tracking</li>
+                            <li>Event reminders and announcements</li>
+                            <li>Real-time notifications using Firebase</li>
+                            <li>Location-based event tracking with Google Maps API</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>HomeFix – Home Services Platform</h3>
+                        <div>
+                            <span class="tag">Mobile App</span>
+                            <span class="tag">Service Booking</span>
+                            <span class="tag">Multi-role</span>
+                        </div>
+                        <p>A complete home services booking platform that connects customers with verified service providers (plumbers, electricians, AC technicians, etc.).</p>
+                        <ul>
+                            <li>Customer, Service Provider & Admin roles</li>
+                            <li>Service booking with time slots</li>
+                            <li>Real-time chat between customer & provider</li>
+                            <li>Provider dashboard, earnings & reviews</li>
+                            <li>Admin panel for users and bookings management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="edu-card">
+                <h3>Bachelor of Software Engineering</h3>
+                <div class="school">PMAS-Arid Agriculture University, Rawalpindi</div>
+                <div class="date">Batch 22 · Completed</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <p>I'm currently looking for Backend / Java Developer opportunities.<br>Feel free to reach out!</p>
+                <div class="contact-links">
+                    <a href="mailto:qaziatif101@gmail.com">📧 qaziatif101@gmail.com</a>
+                    <a href="tel:+923345296454">📱 0334 5296454</a>
+                    <a href="https://linkedin.com/in/qazi-atif-b38371259" target="_blank">🔗 LinkedIn</a>
+                    <a href="https://github.com/qaziatif" target="_blank">💻 GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Qazi Muhammad Atif. Built with focus on clean code.</p>
+        </div>
+    </footer>
+</body>
+</html>
