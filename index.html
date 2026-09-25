@@ -543,6 +543,26 @@
         <div class="container">
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid">
+                                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Event-Driven Order Management System</h3>
+                        <div>
+                            <span class="tag">Java</span>
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">Kafka</span>
+                            <span class="tag">Keycloak</span>
+                            <span class="tag">Microservices</span>
+                        </div>
+                        <p>Microservices-based order system that uses Kafka for event-driven communication and Keycloak for authentication.</p>
+                        <ul>
+                            <li>API Gateway verifies Keycloak JWT tokens</li>
+                            <li>Order Service creates/cancels orders and publishes order.created events</li>
+                            <li>Inventory Service consumes events and updates stock</li>
+                            <li>Notification Service sends email/log alerts from events</li>
+                            <li>Roles: USER and ADMIN</li>
+                        </ul>
+                    </div>
+                </div>
                 <!-- Project 1 -->
                 <div class="project-card">
                     <div class="project-content">
